@@ -1,8 +1,7 @@
 package com.devangeliste.Maillgun.ctrl;
 
 import com.devangeliste.Maillgun.dtos.EmailDTO;
-import com.devangeliste.Maillgun.service.MailgunService;
-import com.mailgun.model.message.MessageResponse;
+import com.devangeliste.Maillgun.service.EmailSenderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MailgunController {
 
-    private final MailgunService service;
+    private final EmailSenderService service;
 
     @PostMapping("/send")
-    ResponseEntity<MessageResponse> sendMail(@RequestBody EmailDTO emailDTO) {
-        return ResponseEntity.ok(service.sendEmail(emailDTO));
+    ResponseEntity<String> sendMail(@RequestBody EmailDTO emailDTO) {
+        service.sendEmail(emailDTO);
+        return ResponseEntity.ok("Email sent successfully");
     }
 }
