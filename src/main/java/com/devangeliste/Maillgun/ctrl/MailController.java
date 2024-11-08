@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/mailgun")
+@RequestMapping("/mail")
 @RequiredArgsConstructor
-public class MailgunController {
+public class MailController {
 
     private final EmailSenderService service;
 
